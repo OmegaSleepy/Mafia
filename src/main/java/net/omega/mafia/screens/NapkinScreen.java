@@ -31,19 +31,20 @@ public class NapkinScreen extends AbstractContainerScreen<NapkinMenu> {
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        // Render the screen Title at the top
         guiGraphics.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY, 0xFFFFFF);
 
-        // Render your custom text in the middle of the screen
-        String customText = "Hello from the Napkin!";
-        int textWidth = this.font.width(customText);
-        
+        String translationKey = this.menu.getRole().translationKey;
+
+        Component dynamicMessage = Component.translatable(translationKey);
+
+        int textWidth = this.font.width(dynamicMessage);
+
         guiGraphics.drawString(
-            this.font, 
-            customText, 
-            (this.imageWidth - textWidth) / 2, 
-            this.imageHeight / 2, 
-            0xAAAAAA
+                this.font,
+                dynamicMessage,
+                (this.imageWidth - textWidth) / 2,
+                this.imageHeight / 2,
+                0xAAAAAA
         );
     }
 }

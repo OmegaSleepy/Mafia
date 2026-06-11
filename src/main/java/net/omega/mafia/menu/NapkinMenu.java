@@ -4,26 +4,40 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.omega.mafia.data.Role;
 
 public class NapkinMenu extends AbstractContainerMenu {
 
-    // Client-side constructor called by NeoForge
-    public NapkinMenu(int containerId, Inventory playerInventory) {
-        this(containerId);
+    private final Role role;
+
+    public NapkinMenu(int containerId, Inventory playerInventory, Role role) {
+        super(ModMenus.NAPKIN_MENU.get(), containerId);
+        this.role = role;
     }
 
-    // Main constructor
+    // Server-side constructor
+    public NapkinMenu(int containerId, Role role) {
+        super(ModMenus.NAPKIN_MENU.get(), containerId);
+        this.role = role;
+    }
+
     public NapkinMenu(int containerId) {
         super(ModMenus.NAPKIN_MENU.get(), containerId);
+        this.role = Role.NONE;
+    }
+
+    // Getter so the Screen class can access it
+    public Role getRole() {
+        return this.role;
     }
 
     @Override
     public ItemStack quickMoveStack(Player player, int index) {
-        return ItemStack.EMPTY; // No slots, so no quick-moving logic needed
+        return ItemStack.EMPTY;
     }
 
     @Override
     public boolean stillValid(Player player) {
-        return true; // Keeps the UI open
+        return true;
     }
 }
