@@ -43,10 +43,6 @@ public class Napkin extends Item {
         return InteractionResultHolder.success(itemStack);
     }
 
-    public void setString (ItemStack itemStack, String string) {
-        itemStack.set(ModDataComponents.ROLE, string);
-    }
-
     @Override
     public void appendHoverText (ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
