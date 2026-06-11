@@ -1,16 +1,19 @@
 package net.omega.mafia.data;
 
 public enum Role {
-    MAFIA("napkin.message.mafia"),
-    BOSS("napkin.message.boss"),
-    DETECTIVE("napkin.message.detective"),
-    MEDIC("napkin.message.medic"),
-    STRIPPER("napkin.message.stripper"),
-    NONE("napkin.message.none");
+    MAFIA,
+    BOSS,
+    DETECTIVE,
+    MEDIC,
+    ESCORT,
+    NONE;
 
-    public final String translationKey;
-
-    Role (String s) {
-        translationKey = s;
+    public String translationKey () {
+        return "napkin.message." + name().toLowerCase();
     }
+
+    public String titleKey () {
+        return "napkin.title." + name().toLowerCase();
+    }
+
 }

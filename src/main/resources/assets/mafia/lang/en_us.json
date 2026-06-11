@@ -1,13 +1,21 @@
 {
-  "itemGroup.mafia": "Example Mod Tab",
-  "block.mafia.example_block": "Example Block",
+
   "item.mafia.napkin": "Fancy Napkin",
 
-  "napkin.message.mafia": "You are a Mafia member. Each night vote for one person to be killed with the other mafioso.",
-  "napkin.message.boss": "You are a Mafia boss. Each night vote for one person to be killed with the other mafioso. You also have the ability to pick one more person to be killed each night.",
-  "napkin.message.detective": "You are the Detective. Each night pick one person to find out if they are a mafioso or not",
-  "napkin.message.medic": "You are the Medic. Each night you can pick one person to be saved from the mafioso, you can also pick yourself, but not twice in a row!",
-  "napkin.message.stipper": "You are the Stripper. Each night you can pick one person to sleep with, protecting them from any harm. If you pick a mafioso, you die in the morning.",
-  "napkin.message.none": "You are a nobody. You have no role XD, better luck next time!",
-  "napkin.title.menu": "You are..."
+  "napkin.message.mafia": "Each night, vote for one person to eliminate along with the other mafiosi.",
+  "napkin.message.boss": "Each night vote for one person to be killed with the other mafiosi. You also have the ability to target an additional person each night.",
+  "napkin.message.detective": "Each night, investigate one person to find out if they are a mafioso.",
+  "napkin.message.medic": "Each night, choose one person to save from the mafia. You can protect yourself, but not twice in a row!",
+  "napkin.message.еscort": "Each night, choose one person to distract, protecting them from harm. If you target a mafioso, you will be eliminated in the morning.",
+  "napkin.message.none": "You have no role XD, better luck next time!",
+
+  "napkin.title.mafia": "You are a §cMafia Member§r",
+  "napkin.title.boss": "You are the §cMafia Boss§r",
+  "napkin.title.detective": "You are the §3Detective§r",
+  "napkin.title.medic": "You are the §2Medic§r",
+  "napkin.title.escort": "You are the §dEscort§r",
+  "napkin.title.none": "You are a nobody",
+
+  "napkin.title.menu": "You are...",
+  "napkin.interact": "Press §7[right-click]§r while holding this item to reveal your role"
 }
