@@ -1,6 +1,7 @@
 package net.omega.mafia.data;
 
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.GameType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,11 @@ public class GamePlayer {
         acts.clear();
 
         return isDead;
+    }
+
+    public void kill() {
+        isAlive = false;
+        player.setGameMode(GameType.SPECTATOR);
     }
 
 }
