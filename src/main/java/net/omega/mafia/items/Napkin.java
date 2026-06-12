@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.omega.mafia.components.ModDataComponents;
 import net.omega.mafia.data.Role;
 import net.omega.mafia.menu.NapkinMenu;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,7 @@ public class Napkin extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, @NotNull InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
         String role = itemStack.get(ModDataComponents.ROLE);
         role = role == null ? "none" : role;
@@ -44,7 +45,7 @@ public class Napkin extends Item {
     }
 
     @Override
-    public void appendHoverText (ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+    public void appendHoverText (ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
 
         if (stack.get(ModDataComponents.ROLE) != null) {
             tooltipComponents.add(Component.translatable("napkin.interact"));

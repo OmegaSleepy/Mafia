@@ -25,7 +25,7 @@ public class MafiaGame {
     public static final Random RANDOM = new Random();
     public int round;
 
-    public List<GamePlayer> votes = new ArrayList<>();
+    public Map<UUID, GamePlayer> votes = new HashMap<>();
     public List<GamePlayer> recentDead = new ArrayList<>();
 
     private int ticksLeft;
@@ -115,6 +115,8 @@ public class MafiaGame {
 
             case VOTE -> {
                 List<Map.Entry<GamePlayer, Integer>> votedOutList = getVotedOut();
+                votes.clear();
+
                 if (votedOutList == null) {
                     announce(Component.translatable("message.game.no-votes"));
                     startPhase(GameState.VOTE, MafiaConfig.DISCUSSION_TIME);
@@ -138,6 +140,7 @@ public class MafiaGame {
                             votedOutList.stream().map(entry -> entry.getKey().player.getName().getString()).toList().toString(),
                             votedOutList.getFirst().getValue().toString()));
                     startPhase(GameState.VOTE, MafiaConfig.DISCUSSION_TIME);
+
                 }
             }
 
@@ -163,7 +166,7 @@ public class MafiaGame {
                         announce(Component.translatable("message.phase2.announce-dead", player.player.getName().getString()));
                     }
                 }
-
+                recentDead.clear();
                 winCheck();
 
                 startPhase(GameState.AFTERNOON, MafiaConfig.FREE_ROAM_TIME);
@@ -194,7 +197,7 @@ public class MafiaGame {
         }
 
         Map<GamePlayer, Integer> voteCounts = new HashMap<>();
-        for (GamePlayer player : votes) {
+        for (GamePlayer player : votes.values()) {
             voteCounts.put(player, voteCounts.getOrDefault(player, 0) + 1);
         }
 

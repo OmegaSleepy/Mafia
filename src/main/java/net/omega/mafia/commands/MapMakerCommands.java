@@ -2,6 +2,7 @@ package net.omega.mafia.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
@@ -9,12 +10,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.omega.mafia.logic.MafiaGame;
 
-import java.util.Random;
 import java.util.UUID;
 
 public class MapMakerCommands {
-
-    public static final Random random = new Random();
 
     public static void register (CommandDispatcher<CommandSourceStack> dispatcher) {
         dispatcher.register(Commands.literal("mapmaker")
@@ -49,7 +47,7 @@ public class MapMakerCommands {
         );
     }
 
-    private static int vote (CommandContext<CommandSourceStack> context, UUID UUID) {
+    private static int vote (CommandContext<CommandSourceStack> context, UUID UUID) throws CommandSyntaxException {
         if (MafiaGame.activeGame.gameState == null) {
             context.getSource().sendFailure(Component.literal("Game has not started"));
             return 0;
@@ -67,7 +65,19 @@ public class MapMakerCommands {
             return 0;
         }
 
-        MafiaGame.activeGame.votes.add(player);
+        var called = context.getSource().getPlayerOrException();
+
+        if (MafiaGame.activeGame.votes.containsKey(called.getUUID())) {
+            context.getSource().sendFailure(Component.literal("You can't vote twice"));
+            return 0;
+        }
+
+        if (called.getUUID().equals(UUID)) {
+            context.getSource().sendFailure(Component.literal("Don't vote for yourself!"));
+            return 0;
+        }
+
+        MafiaGame.activeGame.votes.put(called.getUUID(), player);
         context.getSource().sendSuccess(() ->
                         Component.literal("Successful vote for %s".formatted(
                                 context.getSource().getServer().getPlayerList().getPlayer(UUID).getName().getString())
