@@ -26,6 +26,7 @@ public class MafiaGame {
     public int round;
 
     public List<GamePlayer> votes = new ArrayList<>();
+    public List<GamePlayer> recentDead = new ArrayList<>();
 
     private int ticksLeft;
     private boolean isTimerRunning = false;
@@ -128,7 +129,7 @@ public class MafiaGame {
                             player.player.getName().getString(), votesReceived.toString()));
                     player.kill();
 
-                    // TODO: MAFIA win/lose check
+                    winCheck();
 
                     startPhase(GameState.NIGHT, MafiaConfig.NIGHT_ACTION_TIME);
                     round++;
@@ -141,13 +142,30 @@ public class MafiaGame {
             }
 
             case NIGHT -> {
-                // TODO: apply dead players
+                players.forEach(player -> {
+                    if (!player.survives()) {
+                        player.kill();
+                        recentDead.add(player);
+                    }
+                });
+
                 startPhase(GameState.MORNING, MafiaConfig.PRE_DEATH_ANNOUNCE);
                 announce(Component.translatable("message.phase2.announce-breakfast"));
             }
 
             case MORNING -> {
-                // TODO: announce dead players
+                announce(Component.translatable("message.phase2.announce-morning"));
+                if (recentDead.isEmpty()) {
+                    announce(Component.translatable("message.phase2.announce-morning-no-kills"));
+                } else {
+                    announce(Component.translatable("message.phase2.announce-morning-dead", recentDead.size()));
+                    for (GamePlayer player : recentDead) {
+                        announce(Component.translatable("message.phase2.announce-dead", player.player.getName().getString()));
+                    }
+                }
+
+                winCheck();
+
                 startPhase(GameState.AFTERNOON, MafiaConfig.FREE_ROAM_TIME);
             }
 
@@ -156,6 +174,10 @@ public class MafiaGame {
                 startPhase(GameState.DINNER, MafiaConfig.DISCUSSION_TIME);
             }
         }
+    }
+
+    private void winCheck () {
+
     }
 
     private void announce(Component component) {

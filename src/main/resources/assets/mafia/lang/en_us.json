@@ -25,5 +25,9 @@
   "message.phase2.announce-breakfast": "Good morning survivors, you should go to have breakfast and find out who survived...",
   "message.game.stalemate": "Hey, this was a stalemate! Back to voting!\nThe players: %s got the same number of votes: %d",
   "message.game.no-votes": "No one voted, go again!",
-  "message.game.voted-out": "A player by the name of %s got voted out with %d votes"
+  "message.game.voted-out": "A player by the name of %s got voted out with %d votes",
+  "message.phase2.announce-morning": "Good evening, we have something to share.",
+  "message.phase2.announce-morning-no-kills": "No one died this night!",
+  "message.phase2.announce-morning-dead": "%d people died tonight...",
+  "message.phase2.announce-dead": "%s has died this night..."
 }
