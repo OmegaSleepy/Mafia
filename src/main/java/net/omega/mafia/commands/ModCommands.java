@@ -12,6 +12,7 @@ public class ModCommands {
     private static void registerCommands (RegisterCommandsEvent event) {
         RandomItemCommand.register(event.getDispatcher());
         SetNameCommand.register(event.getDispatcher());
+        MapMakerCommands.register(event.getDispatcher());
     }
 
 }

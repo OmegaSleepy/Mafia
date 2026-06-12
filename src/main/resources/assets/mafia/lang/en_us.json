@@ -9,7 +9,7 @@
   "napkin.message.detective": "Each night, investigate one person to find out if they are a mafioso.",
   "napkin.message.medic": "Each night, choose one person to save from the mafia. You can protect yourself, but not twice in a row!",
   "napkin.message.еscort": "Each night, choose one person to distract, protecting them from harm. If you target a mafioso, you will be eliminated in the morning.",
-  "napkin.message.none": "You have no role XD, better luck next time!",
+  "napkin.message.none": "You are an useless drag of society... Better luck next time! Lmao",
 
   "napkin.title.mafia": "You are a §cMafia Member§r",
   "napkin.title.boss": "You are the §cMafia Boss§r",
@@ -20,5 +20,8 @@
 
   "napkin.title.menu": "You are...",
   "napkin.interact": "Press §7[right-click]§r while holding this item to reveal your role",
-  "message.game.begin": "The Night approaches and all guests should go attend the dinner..."
+
+  "message.game.dinner-begin": "The Night approaches and all guests should go attend the dinner...",
+  "message.phase2.announce-breakfast": "Good morning survivors, you should go to have breakfast and find out who survived...",
+  "message.game.stalemate": "Hey, this was a stalemate! Back to voting!"
 }

@@ -33,6 +33,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.omega.mafia.commands.ModCommands;
 import net.omega.mafia.components.ModDataComponents;
 import net.omega.mafia.items.ModItems;
+import net.omega.mafia.logic.MafiaGame;
 import net.omega.mafia.menu.ModMenus;
 import org.slf4j.Logger;
 import org.slf4j.MDC;

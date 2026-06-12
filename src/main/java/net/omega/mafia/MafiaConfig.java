@@ -9,6 +9,14 @@ public class MafiaConfig {
     // Config values
 //    public static final BooleanValue SPECIFIC_FEATURE_ENABLED;
     public static final ModConfigSpec.IntValue MINIMUM_PLAYER_COUNT;
+
+    public static final ModConfigSpec.IntValue VOTING_TIME;
+    public static final ModConfigSpec.IntValue NIGHT_ACTION_TIME;
+    public static final ModConfigSpec.IntValue PRE_DEATH_ANNOUNCE;
+    public static final ModConfigSpec.IntValue FREE_ROAM_TIME;
+    public static final ModConfigSpec.IntValue DISCUSSION_TIME;
+
+
 //    public static final ConfigValue<String> GREETING_MESSAGE;
 //    public static final ConfigValue<List<? extends String>> ALLOWED_ITEMS;
 
@@ -21,7 +29,27 @@ public class MafiaConfig {
 //
         MINIMUM_PLAYER_COUNT = BUILDER
                 .comment("The minimum number of players to use for the game of Mafia.")
-                .defineInRange("maxLuckyNumbers", 6, 6, 20);
+                .defineInRange("minMafiaPlayers", 6, 6, 20);
+
+        VOTING_TIME = BUILDER
+                .comment("The time players have to vote for a person to go out. (in ticks)")
+                .defineInRange("timeForVoting", 6000, 3000, 12000);
+
+        NIGHT_ACTION_TIME = BUILDER
+                .comment("The time players have to do their actions during the night. (in ticks)")
+                .defineInRange("timeForVoting", 8000, 4000, 12000);
+
+        PRE_DEATH_ANNOUNCE = BUILDER
+                .comment("The time players have before the dead guests are announced. (in ticks)")
+                .defineInRange("timeForVoting", 1000, 4000, 12000);
+
+        FREE_ROAM_TIME = BUILDER
+                .comment("The time players have to go around the hotel and discuss in private. (in ticks)")
+                .defineInRange("timeForVoting", 8000, 4000, 24000);
+
+        DISCUSSION_TIME = BUILDER
+                .comment("The time players have to discuss who to vote out during dinner. (in ticks)")
+                .defineInRange("timeForVoting", 6000, 4000, 12000);
 //
 //        GREETING_MESSAGE = BUILDER
 //                .comment("The message shown to players when they log in.")
@@ -33,7 +61,7 @@ public class MafiaConfig {
 //                        List.of("minecraft:diamond", "minecraft:iron_ingot"),
 //                        obj -> obj instanceof String);
 
-        BUILDER.pop(); // Closes the "general" section
-        SPEC = BUILDER.build(); // Compiles everything into the final SPEC
+        BUILDER.pop();
+        SPEC = BUILDER.build();
     }
 }
