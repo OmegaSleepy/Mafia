@@ -1,10 +1,13 @@
 package net.omega.mafia.util;
 
+import net.omega.mafia.MafiaConfig;
 import net.omega.mafia.data.Role;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static net.omega.mafia.MafiaConfig.MINIMUM_PLAYER_COUNT;
 
 public class RoleDistributor {
 
@@ -14,7 +17,7 @@ public class RoleDistributor {
      * @return A shuffled List of Role enums.
      */
     public static List<Role> generateRoleList(int playerCount) {
-        if (playerCount < 6) {
+        if (playerCount < MINIMUM_PLAYER_COUNT.get()) {
             throw new IllegalArgumentException("Mafia requires a minimum of 6 players.");
         }
 

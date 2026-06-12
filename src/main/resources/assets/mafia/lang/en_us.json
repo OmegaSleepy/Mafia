@@ -1,5 +1,7 @@
 {
 
+  "exception.game.playercount": "The game requires a minimum of %d players to start, only %d present",
+
   "item.mafia.napkin": "Fancy Napkin",
 
   "napkin.message.mafia": "Each night, vote for one person to eliminate along with the other mafiosi.",
@@ -17,5 +19,6 @@
   "napkin.title.none": "You are a nobody",
 
   "napkin.title.menu": "You are...",
-  "napkin.interact": "Press §7[right-click]§r while holding this item to reveal your role"
+  "napkin.interact": "Press §7[right-click]§r while holding this item to reveal your role",
+  "message.game.begin": "The Night approaches and all guests should go attend the dinner..."
 }

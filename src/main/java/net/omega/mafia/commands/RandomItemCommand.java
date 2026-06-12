@@ -19,6 +19,8 @@ public class RandomItemCommand {
                 .executes(RandomItemCommand::giveNapkins)
         );
 
+
+
     }
 
     private static int giveNapkins (CommandContext<CommandSourceStack> context) {

@@ -49,6 +49,8 @@ public class Mafia {
         ModMenus.register(modEventBus);
         ModItems.register(modEventBus);
 
+        modContainer.registerConfig(ModConfig.Type.COMMON, MafiaConfig.SPEC);
+
     }
 
     private void commonSetup (final FMLCommonSetupEvent event) {
