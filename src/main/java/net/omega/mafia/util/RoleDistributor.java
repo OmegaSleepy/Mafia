@@ -17,6 +17,7 @@ public class RoleDistributor {
      * @return A shuffled List of Role enums.
      */
     public static List<Role> generateRoleList(int playerCount) {
+        //TODO implement a way to handle these numbers from the config
         if (playerCount < MINIMUM_PLAYER_COUNT.get()) {
             throw new IllegalArgumentException("Mafia requires a minimum of 6 players.");
         }
